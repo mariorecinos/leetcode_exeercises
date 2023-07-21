@@ -26,6 +26,9 @@ def calculate_results(nums):
 
   return results
 
+#  time complexity = O(n)
+# space complexity = O(1)
+
 # function to test our calculate_results() function if expected matches our result
 
 # Function test_repeated_value() tests the calculate_results() function by passing a predefined input list [2, 2, 2, 2, 2].
