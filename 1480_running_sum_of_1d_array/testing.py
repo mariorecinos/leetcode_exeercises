@@ -17,7 +17,7 @@ class Test_Case1(unittest.TestCase):
 # The expected output list should be cumulative sum of 1 to 1000
 class Test_Large_List(unittest.TestCase):
     def test_large_list(self):
-        nums = list(range(1, 1001))git
+        nums = list(range(1, 1001))
         expected = []
         cumulative_sum = 0
         for i in range(1, 1001):
