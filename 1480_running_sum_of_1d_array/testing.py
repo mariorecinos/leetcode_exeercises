@@ -13,7 +13,7 @@ class Test_Case1(unittest.TestCase):
         results = calculate_results(nums)
         self.assertEqual(results, expected)
 
-# Test Case for a large list with elements from 1 to 1000 change
+# Test Case for a large list with elements from 1 to 1000 
 # The expected output list should be cumulative sum of 1 to 1000
 class Test_Large_List(unittest.TestCase):
     def test_large_list(self):
