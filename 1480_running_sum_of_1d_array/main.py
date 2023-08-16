@@ -62,7 +62,7 @@ def calculate_results(nums):
 
             current_total += nums[i]
             results.append(current_total)
-            print(results)
+            # print(results)
 
         return results
 
@@ -74,7 +74,7 @@ def calculate_results(nums):
 
         return
 
-calculate_results(nums)
+# calculate_results(nums)
 
 # function to test our calculate_results() function if expected matches our result
 

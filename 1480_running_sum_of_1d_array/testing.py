@@ -2,7 +2,7 @@ import unittest
 from main import calculate_results
 
 # This file contains the unit tests for the calculate_results function in the main.py module.
-# To run this file, enter the command 'python -m unittest testing.py' in the shell.
+# To run this file, enter the command 'python3 -m unittest testing.py' in the shell.
 
 # Test Case for a specific case where input list contains [3, 1, 2, 10, 1]
 # The expected output list should be [3, 4, 6, 16, 17]
@@ -13,7 +13,7 @@ class Test_Case1(unittest.TestCase):
         results = calculate_results(nums)
         self.assertEqual(results, expected)
 
-# Test Case for a large list with elements from 1 to 1000 
+# Test Case for a large list with elements from 1 to 1000
 # The expected output list should be cumulative sum of 1 to 1000
 class Test_Large_List(unittest.TestCase):
     def test_large_list(self):
