@@ -19,4 +19,4 @@ jobs:
           python-version: 3.x
 
       - name: Run tests
-        run: python3 -m unittest discover -s leetcode_exercises/1480_running_sum_of_1d_array -p 'testing_*.py'
+        run: python3 -m unittest discover -s $GITHUB_WORKSPACE/1480_running_sum_of_1d_array -p 'testing_*.py'
