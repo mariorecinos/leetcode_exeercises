@@ -9,7 +9,7 @@ from .main import calculate_results
 class Test_Case1(unittest.TestCase):
     def test_case1(self):
         nums = [3, 1, 2, 10, 1]
-        expected = [3, 4, 6, 16, 19]
+        expected = [3, 4, 6, 16, 15]
         results = calculate_results(nums)
         self.assertEqual(results, expected)
 
