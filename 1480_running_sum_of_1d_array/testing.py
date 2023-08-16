@@ -1,5 +1,5 @@
 import unittest
-from main import calculate_results
+from .main import calculate_results
 
 # This file contains the unit tests for the calculate_results function in the main.py module.
 # To run this file, enter the command 'python3 -m unittest testing.py' in the shell.
