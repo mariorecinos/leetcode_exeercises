@@ -84,7 +84,7 @@ def calculate_results(nums):
 # If the expected and actual outputs match, it prints "Test Passed ✓" in green color using the ANSI escape code '\033[32m'.
 # If the outputs do not match, it prints "Test failed ✗" in red color using the ANSI escape code '\033[31m'.
 # The expected and actual outputs are also displayed in the output message.
-# After printing the test result, the function returns the printed message.
+# After printing the test result, the function returns the printed message
 
 def test_repeated_value():
 
