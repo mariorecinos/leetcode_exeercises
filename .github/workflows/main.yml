@@ -20,6 +20,5 @@ jobs:
 
       - name: Run tests
         run: |
-          cd leetcode_exercises/1480_running_sum_of_1d_array/
-          python3 -m unittest testing.py
+          python3 -m unittest 1480_running_sum_of_1d_array/testing.py
         working-directory: ${{ github.workspace }}
