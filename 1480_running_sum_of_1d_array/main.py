@@ -4,9 +4,9 @@
 
 
 
-def calculate_results(nums):
+# def calculate_results(nums):
  # list that stores our appended results
-  results = []
+  # results = []
 
   # add the first item in the list to the results array after
   # iterate over each value in the nums list and add the previous index with the next index
@@ -17,17 +17,64 @@ def calculate_results(nums):
   # results.append(nums[0] + nums[1] + nums[2] + nums[3])  # Append the sum of the first four elments of nums to results [2, 4, 6, 8]
    # results.append(nums[0] + nums[1] + nums[2] + nums[3] + nums[4])  # Append the sum of all elements of nums to results [2, 4, 6, 8]
 
-  for i in range(len(nums)):
-   if i == 0:
-    results.append(nums[i])
-   else:
-    currentTotal = results[i -1] + nums[i]
-    results.append(currentTotal)
+  # for i in range(len(nums)):
+  #  if i == 0:
+  #   results.append(nums[i])
+  #  else:
+  #   currentTotal = results[i -1] + nums[i]
+  #   results.append(currentTotal)
 
-  return results
+  # return results
 
 #  time complexity = O(n)
 # space complexity = O(1)
+
+# Different Solution same time and space complexity and slightly simplifies our code
+# our current_total is initialized before our for in loop and starts 0 for each
+# element in the the list our sum of current_total and the current value of nums is appended to our results list each time
+
+nums = [2, 2, 2, 2, "three"]
+
+# def calculate_results(nums):
+#         results = []
+#         current_total = 0
+#         for i in range(len(nums)):
+#             current_total += nums[i]
+#             results.append(current_total)
+#             print(results)
+#         return results
+
+# calculate_results(nums)
+
+# refactored code to account for error handling
+
+def calculate_results(nums):
+    try:
+        if not isinstance(nums, list):
+            raise TypeError(f"Input must be a list of numbers received: {type(nums)} instead")
+
+        results = []
+        current_total = 0
+
+        for i in range(len(nums)):
+            if not isinstance(nums[i], (int, float)):
+                raise ValueError(f'Invalid input at index {i}.  Expected a number.')
+
+            current_total += nums[i]
+            results.append(current_total)
+            print(results)
+
+        return results
+
+    except TypeError as e:
+        print(f'TypeError: {e}')
+
+    except ValueError as e:
+        print(f'ValueError: {e}')
+
+        return
+
+calculate_results(nums)
 
 # function to test our calculate_results() function if expected matches our result
 
@@ -42,7 +89,7 @@ def calculate_results(nums):
 def test_repeated_value():
 
   nums = [2, 2, 2, 2, 2]
-  expected = [2, 4, 6, 8, 10,]
+  expected = [2, 4, 6, 8, 10]
   results = calculate_results(nums)
 
   if expected != results:
