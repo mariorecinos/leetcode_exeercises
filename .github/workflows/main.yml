@@ -21,3 +21,10 @@ jobs:
       - name: Run tests
         run: python3 -m unittest 1480_running_sum_of_1d_array/testing.py
         working-directory: ${{ github.workspace }}
+
+      - name: Check test status
+        run: |
+          if [ $? -ne 0 ]; then
+            echo "Tests failed. Commit aborted."
+            exit 1
+          fi
