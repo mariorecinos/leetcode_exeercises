@@ -5,11 +5,11 @@ from .main import calculate_results
 # To run this file, enter the command 'python3 -m unittest testing.py' in the shell.
 
 # Test Case for a specific case where input list contains [3, 1, 2, 10, 1]
-# The expected output list should be [3, 4, 6, 16, 17]
+# The expected output list should be [3, 4, 6, 16, 17],
 class Test_Case1(unittest.TestCase):
     def test_case1(self):
         nums = [3, 1, 2, 10, 1]
-        expected = [3, 4, 6, 16, 13]
+        expected = [3, 4, 6, 16, 17]
         results = calculate_results(nums)
         self.assertEqual(results, expected)
 

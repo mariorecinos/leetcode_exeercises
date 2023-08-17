@@ -21,3 +21,22 @@ jobs:
       - name: Run tests
         run:  python3 -m unittest 1480_running_sum_of_1d_array/testing.py
         working-directory: ${{ github.workspace }}
+
+      - name: Check test status and comment on failure
+        if: ${{ failure() }}
+        run: |
+          echo "Tests failed. This pull request will be rejected."
+          PR_NUMBER=$(jq -r '.pull_request.number' "$GITHUB_EVENT_PATH")
+          REPO_OWNER=$(jq -r '.repository.owner.login' "$GITHUB_EVENT_PATH")
+          GITHUB_TOKEN=${{ secrets.LCE_TOKEN }}
+          COMMENTS_URL="https://api.github.com/repos/${REPO_OWNER}/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/comments"
+          BODY="Tests have failed. This pull request will be rejected."
+          echo "$BODY" | curl -X POST -d @- -s -H "Authorization: Bearer $GITHUB_TOKEN" -H "Content-Type: application/json" "$COMMENTS_URL"
+
+          PR_URL="https://api.github.com/repos/${REPO_OWNER}/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}"
+          PR_DATA=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" "$PR_URL")
+          PR_STATE=$(echo "$PR_DATA" | jq -r '.state')
+          if [[ "$PR_STATE" == "open" ]]; then
+            echo "Closing the pull request due to test failure."
+            curl -X PATCH -s -H "Authorization: Bearer $GITHUB_TOKEN" -H "Content-Type: application/json" -d '{"state": "closed"}' "$PR_URL"
+          fi
